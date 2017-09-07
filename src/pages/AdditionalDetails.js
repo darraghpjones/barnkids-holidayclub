@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Row, Input,Button} from 'react-materialize';
+import {Row, Input} from 'react-materialize';
 
 export class AdditionalDetails extends Component {
 
@@ -14,10 +14,10 @@ export class AdditionalDetails extends Component {
 					<Input label='Contact Number' onChange={(event) => {this.props.saveValues({parentContactNo: event.target.value})}} s={12} l={3}/>
 				</Row>
 				<Row>
-					<Input label='Email address' onChange={(event) => {this.props.saveValues({parentEmail: event.target.value})}} s={12} l={3}/>
+					<Input label='Email address' onChange={(event) => {this.props.saveValues({parentEmail: event.target.value})}} s={12} m={6} l={6}/>
 				</Row>
 				<Row>
-					<Input type='textarea' label='Address' onChange={(event) => {this.props.saveValues({parentAddress: event.target.value})}} s={12} l={3}/>
+					<Input type='textarea' label='Address' onChange={(event) => {this.props.saveValues({parentAddress: event.target.value})}} s={12} l={6}/>
 				</Row>
 				<h5>Emergency Contacts</h5>
 				<Row>

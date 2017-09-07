@@ -1,7 +1,7 @@
 import React, { Component  } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
-import logo from './logo.svg';
+import logo from './assets/logo.png';
 import './App.css';
 import {TicketRegistration} from './pages/TicketRegistration';
 import {ConfirmBooking} from './pages/ConfirmBooking';
@@ -38,22 +38,13 @@ class App extends Component {
     });
   };
 
-
-
-
-  
-
-
-
- 
-
   render() {
 
     return (
       <div className="App container">
         <div >
           <img src={logo} className="App-logo" alt="logo" />
-          <h4>Barnkids Ticketing System - October Holiday Club</h4>
+          <h4>October Holiday Club</h4>
         </div>
           <Main/>
       </div>

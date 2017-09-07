@@ -1,10 +1,23 @@
 .App {
   text-align: left;
+
+  background-color: white;
+  padding:30px;
 }
 
+body { 
+    background-image:url('./assets/bg-vector-lg-600x400.png');
+    //font-family: 'Dosis'!important
+ }
+
+ h5 { 
+  padding-top:20px;
+  }
+
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+ 
   height: 80px;
+  width:300px;
 }
 
 .App-header {
@@ -18,7 +31,7 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+.stripe-button { 
+  padding-top:20px;
+ }
+

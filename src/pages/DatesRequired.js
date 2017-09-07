@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import {Row, Input, Card, Button, Col} from 'react-materialize';
+import {Row, Input, Card, Col} from 'react-materialize';
 
 export class DatesRequired extends Component {
 
     onDayChange(event) { 
-
-        var ticketAvailCopy = this.props.ticketSelection.slice();
-        var changedCoreDayCount = 0;
-        var changedFullDayCount = 0;
-
 
         var newTicket = null;
         if (event.target.value === 'CORE'){
@@ -18,33 +13,31 @@ export class DatesRequired extends Component {
                 Status:"Pending"
             };
         }
-        if (event.target.value =='FULL'){
+        if (event.target.value ==='FULL'){
             newTicket = {
                 Date:event.target.name,
                 Type:'Full',
                 Status:"Pending"
             };
         }
-
-        var ticketTypeIsAmended = false;
         var fullDayCount = 0;
         var coreDayCount = 0;
         //find existing ticket and update it - or return existing array
         var updatedTicketSelection = this.props.ticketSelection.filter((item) => {
             
-            if (item.Date == event.target.name) { 
+            if (item.Date === event.target.name) { 
                 return false;
             } else{ 
-                if( item.Type == 'Full') fullDayCount++;
-                if ( item.Type =='Core') coreDayCount++;
+                if( item.Type === 'Full') fullDayCount++;
+                if ( item.Type ==='Core') coreDayCount++;
                 return true;
             }
         });
 
         if (newTicket!=null) { 
             updatedTicketSelection.push(newTicket);
-            if( newTicket.Type == 'Full') fullDayCount++;
-                if ( newTicket.Type =='Core') coreDayCount++;
+            if( newTicket.Type === 'Full') fullDayCount++;
+                if ( newTicket.Type ==='Core') coreDayCount++;
 
         }
 

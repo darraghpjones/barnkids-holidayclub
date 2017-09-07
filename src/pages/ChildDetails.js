@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Input, Button} from 'react-materialize';
+import {Row, Input } from 'react-materialize';
 
 export class ChildDetails extends React.Component {
 
@@ -40,7 +40,7 @@ render() {
             <option value='Other'>Other</option>
         </Input>
       
-         <Input label='Any special friends at the barn?' onChange={(event) => {this.props.saveValues({childFriends: event.target.value})}}s={12} l={3}/>
+         <Input label='Any special friends at the barn?' onChange={(event) => {this.props.saveValues({childFriends: event.target.value})}}s={12} l={6}/>
      </Row>
      <Row>
 
