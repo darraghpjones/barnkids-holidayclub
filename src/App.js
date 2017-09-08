@@ -6,9 +6,6 @@ import './App.css';
 import {TicketRegistration} from './pages/TicketRegistration';
 import {ConfirmBooking} from './pages/ConfirmBooking';
 
-//var connectionstring = 'mongodb://barnkids-app:chick-lashing-speedup@ds121494.mlab.com:21494/barnkids-tickets';
-
-
 const Main = () => (
   <main>
     <Switch>

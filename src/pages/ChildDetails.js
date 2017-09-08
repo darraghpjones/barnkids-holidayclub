@@ -11,7 +11,7 @@ saveAndContinue(e) {
 }
 
 handleSexChoice(e) { 
-  this.props.saveValues({childSex: e.target.value});
+  this.props.saveValues({childSex: e.target.value});    
 }
 
 handleDOBValidation(event){
@@ -23,7 +23,7 @@ render() {
 	return (<div>
 	 <h5> Child Details </h5>
      <Row>
-     	<Input label='Child First Name' onChange={(event) => {this.props.saveValues({childFirstName: event.target.value})}} s={12} l={3}/>
+     	<Input required='true' label='Child First Name' onChange={(event) => {this.props.saveValues({childFirstName: event.target.value})}} s={12} l={3}/>
         	<Input label='Child Surname' onChange={(event) => {this.props.saveValues({childSurname: event.target.value})}} s={12} l={3}/>
             <Input type='date' label='Date of Birth'  onChange={(event) => {this.handleDOBValidation(event)}} s={12} l={3}/>
      </Row>  

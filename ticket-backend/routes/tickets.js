@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var session = require('../model/session');
 var bookingInfo = require('../model/bookingInfo');
 var booking = require('../model/booking');
-var connectionstring = 'mongodb://barnkids-app:chick-lashing-speedup@ds121494.mlab.com:21494/barnkids-tickets';
+const connectionstring = 'mongodb://barnkids-app:chick-lashing-speedup@ds121494.mlab.com:21494/barnkids-tickets';
 
 mongoose.set('debug', true);
 
