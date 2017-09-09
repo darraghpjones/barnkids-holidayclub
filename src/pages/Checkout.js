@@ -39,7 +39,7 @@ onToken = (amount, description, submitBooking) => token =>
 //const Checkout = ({ name, description, amount }) =>
 render(){
 	return(
-		<div className='stripe-button'>
+		
 		<StripeCheckout
 		    name={this.props.name}
 		    description={this.props.description}
@@ -48,7 +48,7 @@ render(){
 		    currency={CURRENCY}
 		    stripeKey={STRIPE_PUBLISHABLE}
 		  />
-		 </div>
+		
   )
 }
 }

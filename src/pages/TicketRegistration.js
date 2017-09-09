@@ -118,6 +118,7 @@ render() {
         <DatesRequired ticketInfo={this.state.ticketInfo} totalAmount={this.state.totalAmount} coreDayCount={this.state.coreDayCount} fullDayCount={this.state.fullDayCount} ticketSelection={this.state.ticketBooking} saveBooking={(booking) => this.saveBooking(booking)}/>
         <AdditionalDetails fields={this.state.formFields} saveValues={(f) => this.saveValues(f)} />
         <Checkout name="Holiday Club Payment" history={this.props.history} submitBooking={() => this.submitBooking()} amount={this.state.totalAmount} description="Barnkids"/>
+        <div className="Breakpoint"/>
     </div>
 	);
 };
