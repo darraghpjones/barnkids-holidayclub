@@ -49,7 +49,6 @@ constructor (props) {
 componentDidMount() {
     axios.get('/tickets/ticketAvailability')
     .then(res => { 
-      console.log(res.data);
       this.setState({ticketInfo:res.data});
       if (this.state.ticketInfo.TicketAvailability){
           this.state.ticketInfo.TicketAvailability.map((item) => 
@@ -73,7 +72,6 @@ saveValues(fields) {
 }
 
 saveBooking(booking) { 
-    console.log(booking);
     this.setState({ticketBooking:booking.ticketSelection});
     this.setState({coreDayCount: booking.coreDayCount});
     this.setState({fullDayCount:booking.fullDayCount});
@@ -95,11 +93,10 @@ saveBooking(booking) {
 
 submitBooking() { 
 
-    console.log('Submitting Booking...');
     var bookingInfo = {fieldValues:this.state.formFields,booking:this.state.ticketBooking};
     axios.post('/tickets/reserveTickets', bookingInfo)
     .then(res => {
-        console.log('Data Successfuly Submitted');
+     
       //this.getTicketData(null);
       //this.setState({ticketList.TicketAvailability:res.data});
     })
