@@ -7,9 +7,23 @@
 
 body { 
     background-image:url('./assets/bg-vector-lg-600x400.png');
-    //font-family: 'Dosis'!important
+    font-family: 'Dosis'!important
  }
 
+ h1 { 
+  background: #f8f8f8;
+  padding-top:10px;
+  padding-bottom:10px;
+  border-top:1px;
+  border-left:0px;
+  border-right:0px;
+  border-bottom:0px;  
+  border-style: solid;
+  border-color:lightgrey;
+  font-family:'Amatic SC', cursive;
+  font-size: 45px;  
+  vertical-align: 10px;
+  }
  h5 { 
   padding-top:20px;
   }
@@ -34,4 +48,13 @@ body {
 .stripe-button { 
   padding-top:20px;
  }
+
+.ticket-card { 
+
+    background: #f8f8f8;
+ }
+
+ .card-title { 
+
+ color:#bd6b1e }
 

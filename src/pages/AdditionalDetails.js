@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {TextInput} from './formComponents/textInput';
 import {Row, Input} from 'react-materialize';
 
 export class AdditionalDetails extends Component {
@@ -9,12 +10,12 @@ export class AdditionalDetails extends Component {
 			<div>
 				<h5>Parent Details </h5>
 				<Row>
-					<Input label='First Name' onChange={(event) => {this.props.saveValues({parentFirstName: event.target.value})}} s={12} l={3}/>
-					<Input label='Surname' onChange={(event) => {this.props.saveValues({parentSurname: event.target.value})}} s={12} l={3}/>
+					<TextInput label='First Name *' type='text' pattern='.{1,}' error='Field Required' className='validate' onChange={(event) => {this.props.saveValues({parentFirstName: event.target.value})}} s={12} l={3}/>
+					<TextInput label='Surname *' onChange={(event) => {this.props.saveValues({parentSurname: event.target.value})}} s={12} l={3}/>
 					<Input label='Contact Number' onChange={(event) => {this.props.saveValues({parentContactNo: event.target.value})}} s={12} l={3}/>
 				</Row>
 				<Row>
-					<Input label='Email address' onChange={(event) => {this.props.saveValues({parentEmail: event.target.value})}} s={12} m={6} l={6}/>
+					<Input label='Email address *' error='Please enter a valid email' type='email' className='validate' onChange={(event) => {this.props.saveValues({parentEmail: event.target.value})}} s={12} m={6} l={6}/>
 				</Row>
 				<Row>
 					<Input type='textarea' label='Address' onChange={(event) => {this.props.saveValues({parentAddress: event.target.value})}} s={12} l={6}/>

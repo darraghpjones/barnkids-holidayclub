@@ -1,5 +1,6 @@
 import React from 'react';
 import {Row, Input } from 'react-materialize';
+import {TextInput} from './formComponents/textInput';
 
 export class ChildDetails extends React.Component {
 
@@ -18,14 +19,18 @@ handleDOBValidation(event){
     this.props.saveValues({childDOB: event.target.value});
 }
 
+handleTextRequired(event){
+
+}
+
 
 render() {
 	return (<div>
 	 <h5> Child Details </h5>
      <Row>
-     	<Input required='true' label='Child First Name' onChange={(event) => {this.props.saveValues({childFirstName: event.target.value})}} s={12} l={3}/>
-        	<Input label='Child Surname' onChange={(event) => {this.props.saveValues({childSurname: event.target.value})}} s={12} l={3}/>
-            <Input type='date' label='Date of Birth'  onChange={(event) => {this.handleDOBValidation(event)}} s={12} l={3}/>
+     	<TextInput required='true' label='Child First Name *' onChange={(event) => {this.props.saveValues({childFirstName: event.target.value})}} s={12} l={3}/>
+        <TextInput label='Child Surname *' onChange={(event) => {this.props.saveValues({childSurname: event.target.value})}} s={12} l={3}/>
+        <Input type='date' label='Date of Birth'  onChange={(event) => {this.handleDOBValidation(event)}} s={12} l={3}/>
      </Row>  
      <Row>
         <Input name='sex' type='radio' value='Male' label='Male' onClick={(e) => this.handleSexChoice(e)} s={6} l={3}/>

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {Button} from 'react-materialize';
 import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
 
@@ -38,18 +39,24 @@ onToken = (amount, description, submitBooking) => token =>
 
 //const Checkout = ({ name, description, amount }) =>
 render(){
-	return(
-		
-		<StripeCheckout
-		    name={this.props.name}
-		    description={this.props.description}
-		    amount={fromEuroToCent(this.props.amount)}
-		    token={this.onToken(this.props.amount, this.props.description, () => this.props.submitBooking())}
-		    currency={CURRENCY}
-		    stripeKey={STRIPE_PUBLISHABLE}
-		  />
-		
-  )
+	if (this.props.valid){
+		return(
+			<StripeCheckout
+			    name={this.props.name}
+			    description={this.props.description}
+			    amount={fromEuroToCent(this.props.amount)}
+			    email={this.props.email}
+			    token={this.onToken(this.props.amount, this.props.description, () => this.props.submitBooking())}
+			    currency={CURRENCY}
+			    stripeKey={STRIPE_PUBLISHABLE}
+			 >
+			 	<Button type='submit'>Pay With Card</Button>
+			 </StripeCheckout>
+	  );
+	}
+	else {
+		return (<Button disabled={true} type='submit'>Pay With Card</Button>);
+	}
 }
 }
   

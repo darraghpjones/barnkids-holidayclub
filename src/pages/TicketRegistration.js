@@ -15,17 +15,17 @@ constructor (props) {
     
 
     var fieldValues = {
-        childFirstName:null,
-             childSurname:null,
+            childFirstName:'',
+            childSurname:null,
             childDOB:null,
             childSex:null,
             childAttendedPreviously:null,
             childSchoolAttended:null,
             childFriends:null ,
-            parentFirstName:'',
-            parentSurname:'',
-            parentContactNo:'',
-            parentEmail:'',
+            parentFirstName:null,
+            parentSurname:null,
+            parentContactNo:null,
+            parentEmail:null,
             parentAddress:'',
             emergency1FirstName:'',
             emergency1Surname:'',
@@ -41,7 +41,7 @@ constructor (props) {
             consentTandC:''
     }
 
-    this.state = {ticketInfo:[], formFields:fieldValues, ticketBooking:[], coreDayCount:0, fullDayCount:0, totalAmount:0};
+    this.state = {ticketInfo:[], formFields:fieldValues, ticketBooking:[], coreDayCount:0, fullDayCount:0, totalAmount:0, valid:false};
     
 
 }
@@ -69,6 +69,7 @@ nextStep() {
 saveValues(fields) { 
             var slicedFieldValues = Object.assign({}, this.state.formFields, fields);
             this.setState({formFields:slicedFieldValues});
+            this.checkValid(slicedFieldValues, this.state.totalAmount);
 }
 
 saveBooking(booking) { 
@@ -76,18 +77,26 @@ saveBooking(booking) {
     this.setState({coreDayCount: booking.coreDayCount});
     this.setState({fullDayCount:booking.fullDayCount});
     this.setState({totalAmount: booking.coreDayCount * 36 + booking.fullDayCount * 44})
+    this.checkValid(this.state.formFields,booking.coreDayCount+booking.fullDayCount);
 
-    /*var slicedTicketInfo = this.props.ticketInfo.TicketAvailability.slice();
+}
 
-    slicedTicketInfo.map((inventory) => { 
+checkValid (fieldValues, totalAmount) {
 
-        booking.ticketSelection.map((bookingItem) => { 
-            if (booking.Day == inventory.Day) { 
-                inventory.Availability = booking.NumberLeft;
+if (
+                fieldValues.childFirstName && fieldValues.childFirstName.length>0 &&
+                fieldValues.childSurname && fieldValues.childSurname.length >0 &&
+                fieldValues.parentFirstName && fieldValues.parentFirstName.length >0 &&
+                fieldValues.parentSurname && fieldValues.parentSurname.length > 0 &&
+                fieldValues.parentEmail && fieldValues.parentEmail.length >0 && 
+                fieldValues.consentIllness && fieldValues.consentTandC &&
+                totalAmount>0){ 
+                this.setState({valid:true});
             }
-        });
-    });*/
-    //this.props.updateTicketData(slicedTicketInfo)
+            else {
+
+                 this.setState({valid:false})
+            } 
 
 }
 
@@ -111,11 +120,12 @@ render() {
     
     return (
 	<div>
-    	<ChildDetails fields={this.state.formFields} saveValues={(f) => this.saveValues(f)}/>
-        <DatesRequired ticketInfo={this.state.ticketInfo} totalAmount={this.state.totalAmount} coreDayCount={this.state.coreDayCount} fullDayCount={this.state.fullDayCount} ticketSelection={this.state.ticketBooking} saveBooking={(booking) => this.saveBooking(booking)}/>
-        <AdditionalDetails fields={this.state.formFields} saveValues={(f) => this.saveValues(f)} />
-        <Checkout name="Holiday Club Payment" history={this.props.history} submitBooking={() => this.submitBooking()} amount={this.state.totalAmount} description="Barnkids"/>
-        <div className="Breakpoint"/>
+
+        	<ChildDetails fields={this.state.formFields} saveValues={(f) => this.saveValues(f)}/>
+            <DatesRequired ticketInfo={this.state.ticketInfo} totalAmount={this.state.totalAmount} coreDayCount={this.state.coreDayCount} fullDayCount={this.state.fullDayCount} ticketSelection={this.state.ticketBooking} saveBooking={(booking) => this.saveBooking(booking)}/>
+            <AdditionalDetails fields={this.state.formFields} saveValues={(f) => this.saveValues(f)} />
+            <Checkout valid={this.state.valid} name="Holiday Club Payment" history={this.props.history} submitBooking={() => this.submitBooking()} amount={this.state.totalAmount} description="Barnkids" email={this.state.formFields?this.state.formFields.parentEmail:''}/>
+
     </div>
 	);
 };

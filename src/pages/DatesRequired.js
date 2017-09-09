@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Row, Input, Card, Col} from 'react-materialize';
+import {Row, Input, Card, Col, Badge} from 'react-materialize';
 
 export class DatesRequired extends Component {
 
@@ -58,25 +58,25 @@ export class DatesRequired extends Component {
                     
 
                    <Col l={4} s={12} key={item.Day}>
-                       <Card title={item.Day}>
-                        <p>Number of places Available: {item.Availability}</p>
+                       <Card textClassName='ticket-card' title={item.Day}>
+                       <Badge>4</Badge>
+                        <p>Number of places remaining: {item.Availability}</p>
                         <Row>
                             <Col s={12}>
-                                <Input name={item.Day} value='NONE' defaultChecked='checked' onClick={(event) => {this.onDayChange(event)}} type='radio' label='None'/>
-                                <Input name={item.Day} value='FULL' onClick={(event) => {this.onDayChange(event)}} type='radio' label='Full Day 8am-6pm'/>
-                                <Input name={item.Day} value='CORE' onClick={(event) => {this.onDayChange(event)}} type='radio' label='Core Day 8:30am - 3:30pm'/> 
+                                <Input name={item.Day} disabled={item.Availability===0?true:false} value='NONE' defaultChecked='checked' onClick={(event) => {this.onDayChange(event)}} s={12} l={12} type='radio' label='None'/>
+                                <Input name={item.Day} disabled={item.Availability===0?true:false} value='FULL' onClick={(event) => {this.onDayChange(event)}} s={12} l={12}  type='radio' label='Full Day 8am-6pm'/>
+                                <Input name={item.Day} disabled={item.Availability===0?true:false} value='CORE' onClick={(event) => {this.onDayChange(event)}} s={12} l={12}  type='radio' label='Core Day 8:30am - 3:30pm'/> 
                             </Col>
                         </Row>
                        </Card>
                     </Col>
                   
                   )}
-                  <Col s={12}>
-                        <Card title='Summary'>
+                  <Col s={12} l={4}>
+                        <Card className='ticket-card' title='Summary'>
                             <div>Total Core Days: {this.props.coreDayCount}</div>
                             <div>Total Full Days: {this.props.fullDayCount}</div>
-                            <div>Total Cost: £{ this.props.totalAmount }.00</div>
-                            
+                            <div>Total Cost: £{ this.props.totalAmount }.00</div>                         
                         </Card>
                   </Col>
                   </Row>
