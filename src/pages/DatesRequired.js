@@ -59,7 +59,6 @@ export class DatesRequired extends Component {
 
                    <Col l={4} s={12} key={item.Day}>
                        <Card textClassName='ticket-card' title={item.Day}>
-                       <Badge>4</Badge>
                         <p>Number of places remaining: {item.Availability}</p>
                         <Row>
                             <Col s={12}>
