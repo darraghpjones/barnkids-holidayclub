@@ -55,7 +55,13 @@ render(){
 	  );
 	}
 	else {
-		return (<Button disabled={true} type='submit'>Pay With Card</Button>);
+		return (
+			<div>
+			<p><b>Payment is required in full at time of booking.</b>  If you would like to use childcare vouchers, this will be refunded once the voucher is received.  
+			Please contact the office for more information </p>
+			<Button disabled={true} type='submit'>Pay With Card</Button>
+			</div>
+			);
 	}
 }
 }

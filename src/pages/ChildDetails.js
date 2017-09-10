@@ -1,6 +1,7 @@
 import React from 'react';
 import {Row, Input } from 'react-materialize';
 import {TextInput} from './formComponents/textInput';
+import {DateInput} from './formComponents/dateInput';
 
 export class ChildDetails extends React.Component {
 
@@ -16,13 +17,14 @@ handleSexChoice(e) {
 }
 
 handleDOBValidation(event){
+    if (event.target.value)
     this.props.saveValues({childDOB: event.target.value});
 }
 
 handleTextRequired(event){
 
 }
-
+//31 /8/2013
 
 render() {
 	return (<div>
@@ -30,7 +32,7 @@ render() {
      <Row>
      	<TextInput required='true' label='Child First Name *' onChange={(event) => {this.props.saveValues({childFirstName: event.target.value})}} s={12} l={3}/>
         <TextInput label='Child Surname *' onChange={(event) => {this.props.saveValues({childSurname: event.target.value})}} s={12} l={3}/>
-        <Input type='date' label='Date of Birth'  onChange={(event) => {this.handleDOBValidation(event)}} s={12} l={3}/>
+        <DateInput type='date' error='Date of Birth Must be on or before 31/8/2013' label='Date of Birth (Must be before 01/09/2013)'  onChange={(event) => {this.handleDOBValidation(event)}} s={12} l={3}/>
      </Row>  
      <Row>
         <Input name='sex' type='radio' value='Male' label='Male' onClick={(e) => this.handleSexChoice(e)} s={6} l={3}/>

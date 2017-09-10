@@ -22,7 +22,7 @@ reset(event){
 
 render() {
 	return (
-		<Input required className='validate invalid' onFocus={(e) => this.reset(e)} onBlur={(event) => this.validate(event) } onChange={(e) => this.props.onChange(e)} s={this.props.s} l={this.props.l} m={this.props.m} label={this.props.label}/>
+		<Input required error={this.props.error} className='invalid' onFocus={(e) => this.reset(e)} onBlur={(event) => this.validate(event) } onChange={(e) => this.props.onChange(e)} s={this.props.s} l={this.props.l} m={this.props.m} label={this.props.label}/>
 		);
 }
 

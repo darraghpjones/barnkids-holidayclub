@@ -83,6 +83,9 @@ saveBooking(booking) {
 
 checkValid (fieldValues, totalAmount) {
 
+var latestDate = new Date('Aug 31, 2013');
+var pickedDate = new Date(fieldValues.childDOB);
+
 if (
                 fieldValues.childFirstName && fieldValues.childFirstName.length>0 &&
                 fieldValues.childSurname && fieldValues.childSurname.length >0 &&
@@ -90,6 +93,7 @@ if (
                 fieldValues.parentSurname && fieldValues.parentSurname.length > 0 &&
                 fieldValues.parentEmail && fieldValues.parentEmail.length >0 && 
                 fieldValues.consentIllness && fieldValues.consentTandC &&
+                fieldValues.childDOB && pickedDate.getTime() <= latestDate.getTime() && 
                 totalAmount>0){ 
                 this.setState({valid:true});
             }

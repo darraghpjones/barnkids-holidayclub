@@ -45,17 +45,17 @@ export class AdditionalDetails extends Component {
 				<h5>Declaration and Consent</h5>
 				<p>In the event of sudden illness or accident affecting my child, if recommended by a doctor, 
 				I agree to emergency treatment including any operative and/or administration of a general anaesthetic 
-				to my child.</p>
-				<Input type='checkbox' label= 'I Agree' onClick={(event) => {this.props.saveValues({consentIllness: event.target.checked})}}/>
+				to my child. * <b>(Required)</b></p>
+				<Input className='validate invalid' type='checkbox' label= 'I Agree' onClick={(event) => {this.props.saveValues({consentIllness: event.target.checked})}}/>
 
 				<p>
-				I give/do not give consent for staff to apply sunscreen / arnica cream/ Waspeze if needed.</p>
+				I give consent for staff to apply sunscreen / arnica cream/ Waspeze if needed.</p>
 				<Input type='checkbox' label= 'I Agree' onClick={(event) => {this.props.saveValues({consentCream: event.target.checked})}}/>
 				
 
 				<p>
-				I have read the <a href="http://www.barnkids.co.uk/terms-and-conditions/">Terms and Conditions</a> of Booking and agree to abide by them.</p>
-				<Input type='checkbox' label= 'I Agree' onClick={(event) => {this.props.saveValues({consentTandC: event.target.checked})}}/>
+				I have read the <a target="_blank" href="http://www.barnkids.co.uk/terms-and-conditions/">Terms and Conditions</a> of Booking and agree to abide by them.* <b>(Required)</b></p>
+				<Input className='validate invalid' type='checkbox' label= 'I Agree' onClick={(event) => {this.props.saveValues({consentTandC: event.target.checked})}}/>
 				
 
 				 

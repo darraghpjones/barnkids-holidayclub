@@ -52,7 +52,7 @@ export class DatesRequired extends Component {
 
 	return (
         <div>
-        <h5>Holiday Sessions Required</h5>
+        <h5>Sessions</h5>
                    <Row>
                   {this.props.ticketInfo.map((item) => 
                     
