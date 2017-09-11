@@ -3,6 +3,9 @@ import {Row, Input, Card, Col, Badge} from 'react-materialize';
 
 export class DatesRequired extends Component {
 
+    componentDidMount(){ 
+      
+    }
     onDayChange(event) { 
 
         var newTicket = null;
@@ -75,7 +78,9 @@ export class DatesRequired extends Component {
                         <Card className='ticket-card' title='Summary'>
                             <div>Total Core Days: {this.props.coreDayCount}</div>
                             <div>Total Full Days: {this.props.fullDayCount}</div>
-                            <div>Total Cost: £{ this.props.totalAmount }.00</div>                         
+                             {this.props.siblingDiscount?<div>Cost: £{ this.props.subTotal.toFixed(2) }</div>:''} 
+                            {this.props.siblingDiscount?<div>Sibling Discount: £{ this.props.discount.toFixed(2)}</div> :''}  
+                            <div><b>Total Charge: £{ this.props.totalAmount.toFixed(2) }</b></div>                    
                         </Card>
                   </Col>
                   </Row>

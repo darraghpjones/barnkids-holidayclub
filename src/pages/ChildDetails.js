@@ -5,6 +5,14 @@ import {DateInput} from './formComponents/dateInput';
 
 export class ChildDetails extends React.Component {
 
+constructor(props){
+    super(props);
+    this.state = {siblingNameEnabled:false};
+}
+
+componentDidMount() { 
+    this.setState( {siblingNameEnabled:false});
+}
 
 saveAndContinue(e) { 
 
@@ -24,6 +32,12 @@ handleDOBValidation(event){
 handleTextRequired(event){
 
 }
+
+handleSiblingCheck(event){ 
+    this.props.saveValues({siblingDiscount: event.target.checked});
+    this.setState({siblingNameEnabled:event.target.checked});
+
+}
 //31 /8/2013
 
 render() {
@@ -32,7 +46,7 @@ render() {
      <Row>
      	<TextInput required='true' label='Child First Name *' onChange={(event) => {this.props.saveValues({childFirstName: event.target.value})}} s={12} l={3}/>
         <TextInput label='Child Surname *' onChange={(event) => {this.props.saveValues({childSurname: event.target.value})}} s={12} l={3}/>
-        <DateInput type='date' error='Date of Birth Must be on or before 31/8/2013' label='Date of Birth (Must be before 01/09/2013)'  onChange={(event) => {this.handleDOBValidation(event)}} s={12} l={3}/>
+        <DateInput type='date' error='Date of Birth Must be on or before 31/8/2013' label='Date of Birth (Must be before 01/09/2013)*'  onChange={(event) => {this.handleDOBValidation(event)}} s={12} l={3}/>
      </Row>  
      <Row>
         <Input name='sex' type='radio' value='Male' label='Male' onClick={(e) => this.handleSexChoice(e)} s={6} l={3}/>
@@ -48,6 +62,11 @@ render() {
         </Input>
       
          <Input label='Any special friends at the barn?' onChange={(event) => {this.props.saveValues({childFriends: event.target.value})}}s={12} l={6}/>
+    </Row>
+    <Row>
+         <Input type='checkbox' value='Yes' label='Do they have a younger sibling at Barnkids?' onClick={(e) => this.handleSiblingCheck(e)} s={12} l={3}/>
+         <Input label='Siblings Name' disabled={(this.state?!this.state.siblingNameEnabled:false)} onClick={(event) => {this.props.saveValues({siblingName: event.target.value})}} s={12} l={3}/>
+
      </Row>
      <Row>
 

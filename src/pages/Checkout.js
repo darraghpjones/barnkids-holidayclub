@@ -41,6 +41,9 @@ onToken = (amount, description, submitBooking) => token =>
 render(){
 	if (this.props.valid){
 		return(
+			<div>
+			<p><b>Payment is required in full at time of booking.</b>  If you would like to use childcare vouchers, this will be refunded once the voucher is received.  
+			Please contact the office for more information </p>
 			<StripeCheckout
 			    name={this.props.name}
 			    description={this.props.description}
@@ -52,6 +55,7 @@ render(){
 			 >
 			 	<Button type='submit'>Pay With Card</Button>
 			 </StripeCheckout>
+			 </div>
 	  );
 	}
 	else {

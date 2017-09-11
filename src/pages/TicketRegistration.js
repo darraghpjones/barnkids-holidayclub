@@ -41,7 +41,7 @@ constructor (props) {
             consentTandC:''
     }
 
-    this.state = {ticketInfo:[], formFields:fieldValues, ticketBooking:[], coreDayCount:0, fullDayCount:0, totalAmount:0, valid:false};
+    this.state = {ticketInfo:[], formFields:fieldValues, ticketBooking:[], coreDayCount:0, fullDayCount:0, totalAmount:0, valid:false, discount:0, subTotal:0};
     
 
 }
@@ -73,10 +73,24 @@ saveValues(fields) {
 }
 
 saveBooking(booking) { 
+
+    var subtotal = booking.coreDayCount * 36 + booking.fullDayCount * 44;
+    var discount = 0
+     if (this.state.formFields.siblingDiscount){
+        discount = subtotal *.1
+    }
+
+    var totalAmount = subtotal - discount;
+
     this.setState({ticketBooking:booking.ticketSelection});
     this.setState({coreDayCount: booking.coreDayCount});
     this.setState({fullDayCount:booking.fullDayCount});
-    this.setState({totalAmount: booking.coreDayCount * 36 + booking.fullDayCount * 44})
+    this.setState({subTotal: subtotal});
+    this.setState({discount: discount});
+   
+
+    this.setState({totalAmount:totalAmount});
+    
     this.checkValid(this.state.formFields,booking.coreDayCount+booking.fullDayCount);
 
 }
@@ -125,8 +139,10 @@ render() {
     return (
 	<div>
 
-        	<ChildDetails fields={this.state.formFields} saveValues={(f) => this.saveValues(f)}/>
-            <DatesRequired ticketInfo={this.state.ticketInfo} totalAmount={this.state.totalAmount} coreDayCount={this.state.coreDayCount} fullDayCount={this.state.fullDayCount} ticketSelection={this.state.ticketBooking} saveBooking={(booking) => this.saveBooking(booking)}/>
+        	<ChildDetails fields={this.state.formFields} saveValues={(f) => this.saveValues(f)} saveBooking={(booking) => this.saveBooking(booking)}/>
+            <DatesRequired ticketInfo={this.state.ticketInfo} totalAmount={this.state.totalAmount} siblingDiscount={this.state.formFields.siblingDiscount} discount={this.state.discount} subTotal={this.state.subTotal} 
+                coreDayCount={this.state.coreDayCount} fullDayCount={this.state.fullDayCount} 
+                ticketSelection={this.state.ticketBooking} saveBooking={(booking) => this.saveBooking(booking)}/>
             <AdditionalDetails fields={this.state.formFields} saveValues={(f) => this.saveValues(f)} />
             <Checkout valid={this.state.valid} name="Holiday Club Payment" history={this.props.history} submitBooking={() => this.submitBooking()} amount={this.state.totalAmount} description="Barnkids" email={this.state.formFields?this.state.formFields.parentEmail:''}/>
 
